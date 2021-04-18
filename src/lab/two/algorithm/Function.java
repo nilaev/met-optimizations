@@ -1,8 +1,11 @@
 package lab.two.algorithm;
 
+import java.util.ArrayList;
+
 public abstract class Function {
     protected abstract void init(double[] startPoint, double eps);
     protected abstract double[] returnAns();
+    protected ArrayList<ArrayList<Double>> curPoints = new ArrayList<>();
 
     protected final double func(final double ... args) {
         //return 10 * Math.pow(args[0], 2) + Math.pow(args[1], 2);
@@ -19,6 +22,10 @@ public abstract class Function {
             ans[i] = (ans[i] - func(args)) / d;
         }
         return ans;
+    }
+
+    public ArrayList<ArrayList<Double>> getPoints() {
+        return curPoints;
     }
 
     public double[] apply(double[] startPoint, double eps) {

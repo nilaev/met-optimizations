@@ -1,5 +1,6 @@
 package lab.two.algorithm;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class GradientDescent extends Function {
@@ -29,6 +30,10 @@ public class GradientDescent extends Function {
             }
 
             args0 = Arrays.copyOf(args1, args1.length);
+            ArrayList<Double> tmp = new ArrayList<>();
+            tmp.add(args0[0]);
+            tmp.add(args0[1]);
+            curPoints.add(tmp);
             iter += 1;
         }
 
@@ -46,6 +51,7 @@ public class GradientDescent extends Function {
 
     @Override
     protected double[] returnAns() {
+        //curPoints = new ArrayList<>();
         return calculateGradientDescent(eps, startPoint);
     }
 }

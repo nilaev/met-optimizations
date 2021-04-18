@@ -17,6 +17,7 @@ import lab.two.algorithm.Function;
 import lab.two.algorithm.GradientDescent;
 import lab.two.algorithm.SteepestDescent;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.function.DoubleFunction;
@@ -81,11 +82,20 @@ public class Controller {
 			double[] ys = Arrays.stream(angles).map(a -> Math.sin(a) * finalK).toArray();
 			paintPolygon(xs, ys, -1, 1, -1, 1, bounds, g);
 		}
-		double[] xs = {-0.8, -0.4, -0.3, -0.2, -0.1};
-		double[] ys = {-0.8, -0.5, -0.3, -0.1, -0.04};
+		ArrayList<ArrayList<Double>> coors = performedAlgo.getPoints();
+		int coorsSz = coors.size();
+		System.out.println(coorsSz);
+		double[] xs = new double[coorsSz];
+		double[] ys = new double[coorsSz];
+		for (int i = 0; i < coorsSz; i += 1500) {
+			xs[i] = coors.get(i).get(0);
+			ys[i] = coors.get(i).get(1);
+			System.out.println(xs[i] + " " + ys[i]);
+		}
+
 		paintSegments(xs, ys, -1, 1, -1, 1, bounds, g);
 	}
-	
+
 	private void paintSegments(double[] xs, double[] ys,
 	                           double xMin, double xMax,
 	                           double yMin, double yMax,
