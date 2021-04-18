@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lab.one.app.Controller">
+   <children>
+      <MenuBar>
+        <menus>
+            <Menu mnemonicParsing="false" onAction="#onAlgorithmUpdate" text="Algorithm">
+              <items>
+                  <RadioMenuItem fx:id="dichMenu" mnemonicParsing="false" text="Dichotomy">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="algorithm" />
+                     </toggleGroup>
+                  </RadioMenuItem>
+                  <RadioMenuItem fx:id="goldRatio" mnemonicParsing="false" text="Golden Ratio" toggleGroup="$algorithm" />
+                  <RadioMenuItem fx:id="fibMenu" mnemonicParsing="false" text="Fibonacci" toggleGroup="$algorithm" />
+                  <RadioMenuItem fx:id="parabolicMenu" mnemonicParsing="false" text="Parabolic" toggleGroup="$algorithm" />
+                  <RadioMenuItem fx:id="brentMenu" mnemonicParsing="false" text="Brent" toggleGroup="$algorithm" />
+              </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+      <Canvas fx:id="canvas" height="330.0" layoutY="32.0" width="600.0" />
+      <TextField fx:id="rangeInput1" layoutX="179.0" layoutY="362.0" onAction="#onRange1Action" prefHeight="31.0" prefWidth="72.0" text="-0.5" visible="false" />
+      <TextField fx:id="rangeInput2" layoutX="300.0" layoutY="362.0" onAction="#onRange2Action" prefHeight="31.0" prefWidth="72.0" text="0.5" visible="false" />
+      <Text fx:id="chooseAlgoLabel" layoutX="241.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose algorithm" textAlignment="CENTER" />
+   </children>
+</Pane>

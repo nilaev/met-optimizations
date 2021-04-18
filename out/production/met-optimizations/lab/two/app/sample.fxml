@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lab.two.app.Controller">
+   <children>
+      <MenuBar>
+        <menus>
+            <Menu mnemonicParsing="false" onAction="#onAlgorithmUpdate" text="Algorithm">
+              <items>
+                  <RadioMenuItem fx:id="gradMenu" mnemonicParsing="false" text="Gradient Descent">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="algorithm" />
+                     </toggleGroup>
+                  </RadioMenuItem>
+                  <RadioMenuItem fx:id="steepMenu" mnemonicParsing="false" text="Steepest Descent" toggleGroup="$algorithm" />
+                  <RadioMenuItem fx:id="conjMenu" mnemonicParsing="false" text="Conjugate Gradients" toggleGroup="$algorithm" />
+              </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+      <Canvas fx:id="canvas" height="330.0" layoutY="32.0" width="600.0" />
+      <TextField fx:id="rangeInput1" layoutX="179.0" layoutY="362.0" onAction="#onRange1Action" prefHeight="31.0" prefWidth="72.0" promptText="X" text="20" visible="false" />
+      <TextField fx:id="rangeInput2" layoutX="300.0" layoutY="362.0" onAction="#onRange2Action" prefHeight="31.0" prefWidth="72.0" promptText="Y" text="20" visible="false" />
+      <Text fx:id="chooseAlgoLabel" layoutX="241.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose algorithm" textAlignment="CENTER" />
+   </children>
+</Pane>
