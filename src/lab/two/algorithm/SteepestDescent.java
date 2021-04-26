@@ -52,8 +52,7 @@ public class SteepestDescent extends Function {
             for (int i = 0; i < minusGrad.length; i++) {
                 minusGrad[i] = -minusGrad[i];
             }
-            double[] point = GoldenRatio(eps, args0, minusGrad);
-            double[] args1 = Arrays.copyOf(point, point.length);
+            double[] args1 = GoldenRatio(eps, args0, minusGrad);
             double dist = 0;
             for (int i = 0; i < args0.length; i++) {
                 dist += Math.pow((args1[i] - args0[i]), 2);

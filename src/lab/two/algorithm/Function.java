@@ -7,9 +7,10 @@ public abstract class Function {
     protected abstract double[] returnAns();
     protected ArrayList<ArrayList<Double>> curPoints = new ArrayList<>();
 
-    protected final double func(final double ... args) {
+    protected final double func(final double ... x) {
         //return 10 * Math.pow(args[0], 2) + Math.pow(args[1], 2);
-        return Math.pow(args[0], 2) / 15 + Math.pow(args[1], 2) / 2;
+        //return Math.pow(args[0], 2) / 15 + Math.pow(args[1], 2) / 2;
+        return (x[0] - 5) * (x[0] - 5) * (x[1] - 4) * (x[1] - 4) +  (x[0] - 5) * (x[0] - 5) + (x[1] - 4) * (x[1] - 4) + 1;
     }
 
     protected final double[] gradient(final double ... args) {
