@@ -80,6 +80,7 @@ public class SteepestDescent extends Function {
 
     @Override
     protected double[] returnAns() {
+        eps = 0.001;
         return calculateSteepestDescent(eps, startPoint);
     }
 }

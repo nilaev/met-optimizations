@@ -7,7 +7,7 @@ import lab.two.algorithm.SteepestDescent;
 
 public class Lab2Runner {
     private static final double[] startPoint = new double[]{20, 20};
-    public static final double eps = 0.00001;
+    public static final double eps = 0.001;
 
     public static void runAlgorithm(Function algorithm) {
         System.out.println(algorithm.getClass().getName() + '\n');
@@ -20,13 +20,6 @@ public class Lab2Runner {
     }
 
     public static void main(String[] args) {
-        runAlgorithm(new ConjugateGradients());
+        runAlgorithm(new GradientDescent());
     }
 }
-/*
-lab.two.algorithm.SteepestDescent
-
-Minimum point coordinates:
--0.002722046103533122 -0.002686573025327429
-Number of iteration: 37.0
- */
