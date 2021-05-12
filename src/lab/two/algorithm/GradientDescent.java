@@ -16,6 +16,10 @@ public class GradientDescent extends Function {
 //        double prevX = args[0];
 //        double prevY = args[1];
 
+        ArrayList<Double> tmp = new ArrayList<>();
+        tmp.add(args0[0]);
+        tmp.add(args0[1]);
+        curPoints.add(tmp);
         while (!stop) {
             double[] grad = gradient(args0);
             for (int i = 0; i < args1.length; i++) {
@@ -32,10 +36,10 @@ public class GradientDescent extends Function {
             }
 
             args0 = Arrays.copyOf(args1, args1.length);
-            ArrayList<Double> tmp = new ArrayList<>();
-            tmp.add(args0[0]);
-            tmp.add(args0[1]);
-            curPoints.add(tmp);
+            ArrayList<Double> tmpp = new ArrayList<>();
+            tmpp.add(args0[0]);
+            tmpp.add(args0[1]);
+            curPoints.add(tmpp);
 
 //            // for 1 task "Скорость сходимости"
 //            double curX = args0[0];

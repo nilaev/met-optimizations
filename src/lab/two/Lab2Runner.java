@@ -21,5 +21,9 @@ public class Lab2Runner {
 
     public static void main(String[] args) {
         runAlgorithm(new GradientDescent());
+        System.out.println();
+        runAlgorithm(new SteepestDescent());
+        System.out.println();
+        runAlgorithm(new ConjugateGradients());
     }
 }

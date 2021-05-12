@@ -75,25 +75,68 @@ public class Controller {
 	}
 	
 	void paintAlgorithm(Function performedAlgo, Bounds bounds, GraphicsContext g) {
-		for (double k = 0.1; k <= 1; k += 0.1) {
-			double[] angles = IntStream.range(0, 20).mapToDouble(i -> i * 2 * Math.PI / 20).toArray();
-			double finalK = k;
-			double[] xs = Arrays.stream(angles).map(a -> Math.cos(a) * finalK).toArray();
-			double[] ys = Arrays.stream(angles).map(a -> Math.sin(a) * finalK).toArray();
-			paintPolygon(xs, ys, -1, 1, -1, 1, bounds, g);
+		switch (Function.MODE) {
+			case 1:
+				// Part for function 10*x^2 + y^2
+				for (double level = 0; level <= 20; level++) {
+					ArrayList<Double> xs = new ArrayList<>();
+					ArrayList<Double> ys = new ArrayList<>();
+					for (double x = -level; x <= level; x += 0.1) {
+						xs.add(x);
+						ys.add(Function.inverseFunction(x, level));
+					}
+					for (double x = level; x >= -level; x -= 0.1) {
+						xs.add(x);
+						ys.add(Function.minusInverseFunction(x, level));
+					}
+					paintPolygon(
+							xs.stream().mapToDouble(xx -> xx).toArray(),
+							ys.stream().mapToDouble(yy -> yy).toArray(),
+							-10, 10, -10, 10, bounds, g);
+				}
+			case 2:
+				// Part for function x^2 + 10xy + y^2
+				for (double level = 0; level <= 20; level++) {
+					ArrayList<Double> xs = new ArrayList<>();
+					ArrayList<Double> ys = new ArrayList<>();
+					for (double x = -level; x <= level; x += 0.1) {
+						xs.add(x);
+						ys.add(Function.inverseFunction(x, level));
+					}
+					for (double x = level; x >= -level; x -= 0.1) {
+						xs.add(x);
+						ys.add(Function.inverseFunction(x, level));
+					}
+					paintPolygon(
+							xs.stream().mapToDouble(xx -> xx).toArray(),
+							ys.stream().mapToDouble(yy -> yy).toArray(),
+							-2, 2, -2, 2, bounds, g);
+
+					xs.clear();
+					ys.clear();
+					for (double x = level; x >= -level; x -= 0.1) {
+						xs.add(x);
+						ys.add(Function.minusInverseFunction(x, level));
+					}
+					for (double x = -level; x <= level; x += 0.1) {
+						xs.add(x);
+						ys.add(Function.minusInverseFunction(x, level));
+					}
+					paintPolygon(
+							xs.stream().mapToDouble(xx -> xx).toArray(),
+							ys.stream().mapToDouble(yy -> yy).toArray(),
+							-2, 2, -2, 2, bounds, g);
+				}
 		}
 		ArrayList<ArrayList<Double>> coors = performedAlgo.getPoints();
 		int coorsSz = coors.size();
-		System.out.println(coorsSz);
 		double[] xs = new double[coorsSz];
 		double[] ys = new double[coorsSz];
-		for (int i = 0; i < coorsSz; i += 1500) {
+		for (int i = 0; i < coorsSz; i++) {
 			xs[i] = coors.get(i).get(0);
 			ys[i] = coors.get(i).get(1);
-			System.out.println(xs[i] + " " + ys[i]);
 		}
-
-		paintSegments(xs, ys, -1, 1, -1, 1, bounds, g);
+		paintSegments(xs, ys, -20, 20, -20, 20, bounds, g);
 	}
 
 	private void paintSegments(double[] xs, double[] ys,
@@ -114,7 +157,8 @@ public class Controller {
 			double y = ys[i];
 			double mappedX = map(x, xMin, xMax, bounds.getMinX(), bounds.getMaxX());
 			double mappedY = map(y, yMax, yMin, bounds.getMinY(), bounds.getMaxY());
-			Text s = new Text(String.format("x%d", i));
+			//Text s = new Text(String.format("x%d", i));
+			Text s = new Text("");
 			s.setFont(font);
 			g.fillText(s.getText(), mappedX - 10, mappedY - 5);
 			if (i != 0) {

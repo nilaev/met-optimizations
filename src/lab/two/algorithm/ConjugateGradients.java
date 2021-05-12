@@ -1,5 +1,8 @@
 package lab.two.algorithm;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class ConjugateGradients extends Function {
     private static double[] startPoint;
     private static double eps;
@@ -65,6 +68,10 @@ public class ConjugateGradients extends Function {
         int iter = 0;
         do {
             iter++;
+            ArrayList<Double> tmp = new ArrayList<>();
+            tmp.add(curX[0]);
+            tmp.add(curX[1]);
+            curPoints.add(tmp);
 //            double[] cp = curX;
             for (int i = 0; i < A.length && getMod(curGradient) > eps; i++) {
                 double[] curApK = multiply(A, curP);
@@ -91,6 +98,10 @@ public class ConjugateGradients extends Function {
 //            double curY = curX[1];
 //            System.out.println((iter) + " & " + Math.sqrt(Math.pow(cp[0] - currX, 2) + Math.pow(cp[1] - curY, 2)) + "\\" + "\\");
         } while (getMod(curGradient) > eps);
+        ArrayList<Double> tmp = new ArrayList<>();
+        tmp.add(curX[0]);
+        tmp.add(curX[1]);
+        curPoints.add(tmp);
 
         double[] ans = new double[curX.length + 1];
         System.arraycopy(curX, 0, ans, 0, curX.length);

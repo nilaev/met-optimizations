@@ -1,5 +1,6 @@
 package lab.two.algorithm;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class SteepestDescent extends Function {
@@ -46,6 +47,10 @@ public class SteepestDescent extends Function {
         int iter = 0;
         double[] args0 = Arrays.copyOf(args, args.length);
 
+        ArrayList<Double> tmp = new ArrayList<>();
+        tmp.add(args0[0]);
+        tmp.add(args0[1]);
+        curPoints.add(tmp);
         while (!stop) {
             double[] grad = gradient(args0);
             double[] minusGrad = Arrays.copyOf(grad, grad.length);
@@ -63,6 +68,10 @@ public class SteepestDescent extends Function {
             }
 
             args0 = Arrays.copyOf(args1, args1.length);
+            ArrayList<Double> tmpp = new ArrayList<>();
+            tmpp.add(args0[0]);
+            tmpp.add(args0[1]);
+            curPoints.add(tmpp);
             iter += 1;
         }
         double[] ans = new double[args0.length + 1];
