@@ -13,9 +13,6 @@ public class GradientDescent extends Function {
         int iter = 0;
         double[] args0 = Arrays.copyOf(args, args.length);
         double[] args1 = new double[args.length];
-//        double prevX = args[0];
-//        double prevY = args[1];
-
         ArrayList<Double> tmp = new ArrayList<>();
         tmp.add(args0[0]);
         tmp.add(args0[1]);
@@ -40,14 +37,6 @@ public class GradientDescent extends Function {
             tmpp.add(args0[0]);
             tmpp.add(args0[1]);
             curPoints.add(tmpp);
-
-//            // for 1 task "Скорость сходимости"
-//            double curX = args0[0];
-//            double curY = args0[1];
-//            System.out.println((iter + 1) + " & " + Math.sqrt(Math.pow(prevX - curX, 2) + Math.pow(prevY - curY, 2)) + "\\" + "\\");
-//            prevX = curX;
-//            prevY = curY;
-//            // 1 task ended
             iter += 1;
         }
 

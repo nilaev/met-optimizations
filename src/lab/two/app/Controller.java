@@ -94,6 +94,7 @@ public class Controller {
 							ys.stream().mapToDouble(yy -> yy).toArray(),
 							-10, 10, -10, 10, bounds, g);
 				}
+				break;
 			case 2:
 				// Part for function x^2 + 10xy + y^2
 				for (double level = 0; level <= 20; level++) {
@@ -127,6 +128,7 @@ public class Controller {
 							ys.stream().mapToDouble(yy -> yy).toArray(),
 							-2, 2, -2, 2, bounds, g);
 				}
+				break;
 		}
 		ArrayList<ArrayList<Double>> coors = performedAlgo.getPoints();
 		int coorsSz = coors.size();

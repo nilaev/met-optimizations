@@ -3,7 +3,7 @@ package lab.two.algorithm;
 import java.util.ArrayList;
 
 public abstract class Function {
-    public static final int MODE = 2;
+    public static final int MODE = 1;
     // MODE = 1 for function 10*x^2 + y^2
     // MODE = 2 for function x^2 + 10xy + y^2
 

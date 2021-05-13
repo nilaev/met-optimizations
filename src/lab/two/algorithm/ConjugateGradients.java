@@ -1,18 +1,27 @@
 package lab.two.algorithm;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class ConjugateGradients extends Function {
     private static double[] startPoint;
     private static double eps;
-    private static final double[][] A = new double[][]{{20, 0}, {0, 2}};
-    private static final double[] B = new double[]{0, 0};
+    private static double[][] A;
+    private static double[] B;
 
     @Override
     protected void init(double[] startPoint, double eps) {
         ConjugateGradients.startPoint = startPoint;
         ConjugateGradients.eps = eps;
+        switch (MODE) {
+            case 1:
+                A = new double[][]{{20, 0}, {0, 2}};
+                B = new double[]{0, 0};
+                break;
+            case 2:
+                A = new double[][]{{2, 10}, {10, 2}};
+                B = new double[]{0, 0};
+                break;
+        }
     }
 
     private double innerproduct(double[] a, double[] b) {
@@ -72,7 +81,6 @@ public class ConjugateGradients extends Function {
             tmp.add(curX[0]);
             tmp.add(curX[1]);
             curPoints.add(tmp);
-//            double[] cp = curX;
             for (int i = 0; i < A.length && getMod(curGradient) > eps; i++) {
                 double[] curApK = multiply(A, curP);
                 double alfa = Math.pow(getMod(findGradient(curX)), 2) / innerproduct(curApK, curP);
@@ -93,10 +101,6 @@ public class ConjugateGradients extends Function {
                 curP = newP;
                 curGradient = newGradient;
             }
-
-//            double currX = curX[0];
-//            double curY = curX[1];
-//            System.out.println((iter) + " & " + Math.sqrt(Math.pow(cp[0] - currX, 2) + Math.pow(cp[1] - curY, 2)) + "\\" + "\\");
         } while (getMod(curGradient) > eps);
         ArrayList<Double> tmp = new ArrayList<>();
         tmp.add(curX[0]);
