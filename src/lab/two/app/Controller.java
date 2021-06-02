@@ -129,6 +129,8 @@ public class Controller {
 							-2, 2, -2, 2, bounds, g);
 				}
 				break;
+			default:
+				break;
 		}
 		ArrayList<ArrayList<Double>> coors = performedAlgo.getPoints();
 		int coorsSz = coors.size();

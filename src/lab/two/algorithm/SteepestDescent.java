@@ -44,7 +44,7 @@ public class SteepestDescent extends Function {
 
     private double[] calculateSteepestDescent(double eps, double ... args) {
         boolean stop = false;
-        int iter = 0;
+        int iter = 0, counter = 1;
         double[] args0 = Arrays.copyOf(args, args.length);
 
         ArrayList<Double> tmp = new ArrayList<>();
@@ -71,7 +71,10 @@ public class SteepestDescent extends Function {
             ArrayList<Double> tmpp = new ArrayList<>();
             tmpp.add(args0[0]);
             tmpp.add(args0[1]);
-            curPoints.add(tmpp);
+            if (iter / 10 == counter) {
+                curPoints.add(tmpp);
+                counter++;
+            }
             iter += 1;
         }
         double[] ans = new double[args0.length + 1];
